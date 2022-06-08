@@ -1,6 +1,7 @@
 ﻿namespace SerenPro.Administration {
     export interface UserRow {
         UserId?: number;
+        KodeAnggota?: string;
         Username?: string;
         Source?: string;
         PasswordHash?: string;
@@ -12,6 +13,12 @@
         IsActive?: number;
         Password?: string;
         PasswordConfirm?: string;
+        TempatLahir?: string;
+        TanggalLahir?: string;
+        JenisKelamin?: JenKel;
+        Telepon?: string;
+        Whatsapp?: string;
+        Alamat?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -35,6 +42,7 @@
 
         export declare const enum Fields {
             UserId = "UserId",
+            KodeAnggota = "KodeAnggota",
             Username = "Username",
             Source = "Source",
             PasswordHash = "PasswordHash",
@@ -46,6 +54,12 @@
             IsActive = "IsActive",
             Password = "Password",
             PasswordConfirm = "PasswordConfirm",
+            TempatLahir = "TempatLahir",
+            TanggalLahir = "TanggalLahir",
+            JenisKelamin = "JenisKelamin",
+            Telepon = "Telepon",
+            Whatsapp = "Whatsapp",
+            Alamat = "Alamat",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

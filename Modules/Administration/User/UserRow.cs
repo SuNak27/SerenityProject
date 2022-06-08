@@ -20,6 +20,13 @@ namespace SerenPro.Administration.Entities
             set => fields.UserId[this] = value;
         }
 
+        [DisplayName("KodeAnggota"), Size(9)]
+        public String KodeAnggota
+        {
+            get => fields.KodeAnggota[this];
+            set => fields.KodeAnggota[this] = value;
+        }        
+
         [DisplayName("Username"), Size(100), NotNull, QuickSearch, LookupInclude, NameProperty]
         public String Username
         {
@@ -96,7 +103,50 @@ namespace SerenPro.Administration.Entities
         {
             get => fields.LastDirectoryUpdate[this];
             set => fields.LastDirectoryUpdate[this] = value;
-        }
+        }
+
+        [DisplayName("Tempat Lahir"), Size(100)]
+        public String TempatLahir
+        {
+            get => fields.TempatLahir[this];
+            set => fields.TempatLahir[this] = value;
+        }
+
+        [DisplayName("Tanggal Lahir")]
+        public DateTime? TanggalLahir
+        {
+            get => fields.TanggalLahir[this];
+            set => fields.TanggalLahir[this] = value;
+        }
+
+        [DisplayName("Jenis Kelamin"), DefaultValue(JenKel.LakiLaki)]
+        public JenKel? JenisKelamin
+        {
+            get => (JenKel?)fields.JenisKelamin[this];
+            set => fields.JenisKelamin[this] = (Int32?)value;
+        }
+
+        [DisplayName("Telepon"), Size(20)]
+        public String Telepon
+        {
+            get => fields.Telepon[this];
+            set => fields.Telepon[this] = value;
+        }
+        
+        [DisplayName("Whatsapp"), Size(20)]
+        public String Whatsapp
+        {
+            get => fields.Whatsapp[this];
+            set => fields.Whatsapp[this] = value;
+        }
+
+        [DisplayName("Alamat")]
+        public String Alamat
+        {
+            get => fields.Alamat[this];
+            set => fields.Alamat[this] = value;
+        }
+
         Int16Field IIsActiveRow.IsActiveField
         {
             get => fields.IsActive;
@@ -114,6 +164,7 @@ namespace SerenPro.Administration.Entities
         public class RowFields : LoggingRowFields
         {
             public Int32Field UserId;
+            public StringField KodeAnggota;
             public StringField Username;
             public StringField Source;
             public StringField PasswordHash;
@@ -122,10 +173,18 @@ namespace SerenPro.Administration.Entities
             public StringField Email;
             public StringField UserImage;
             public DateTimeField LastDirectoryUpdate;
-            public Int16Field IsActive;
+            public Int16Field IsActive; 
 
             public StringField Password;
             public StringField PasswordConfirm;
+
+            public StringField TempatLahir;
+            public DateTimeField TanggalLahir;
+            public Int32Field JenisKelamin;
+            public StringField Telepon;
+            public StringField Whatsapp;
+            public StringField Alamat;
+
         }
     }
 }

@@ -6,6 +6,12 @@
 /// <reference types="serenity.pro.ui" />
 /// <reference types="serenity.pro.extensions" />
 declare namespace SerenPro.Administration {
+    enum JenKel {
+        LakiLaki = 1,
+        Perempuan = 2
+    }
+}
+declare namespace SerenPro.Administration {
     class LanguageColumns {
         static columnsKey: string;
     }
@@ -213,10 +219,17 @@ declare namespace SerenPro.Administration {
 }
 declare namespace SerenPro.Administration {
     interface UserForm {
+        KodeAnggota: Serenity.StringEditor;
         Username: Serenity.StringEditor;
         DisplayName: Serenity.StringEditor;
         Email: Serenity.EmailEditor;
         UserImage: Serenity.ImageUploadEditor;
+        TempatLahir: Serenity.StringEditor;
+        TanggalLahir: Serenity.DateEditor;
+        JenisKelamin: Serenity.EnumEditor;
+        Telepon: Serenity.StringEditor;
+        Whatsapp: Serenity.StringEditor;
+        Alamat: Serenity.StringEditor;
         Password: Serenity.PasswordEditor;
         PasswordConfirm: Serenity.PasswordEditor;
         Source: Serenity.StringEditor;
@@ -337,6 +350,7 @@ declare namespace SerenPro.Administration {
 declare namespace SerenPro.Administration {
     interface UserRow {
         UserId?: number;
+        KodeAnggota?: string;
         Username?: string;
         Source?: string;
         PasswordHash?: string;
@@ -348,6 +362,12 @@ declare namespace SerenPro.Administration {
         IsActive?: number;
         Password?: string;
         PasswordConfirm?: string;
+        TempatLahir?: string;
+        TanggalLahir?: string;
+        JenisKelamin?: JenKel;
+        Telepon?: string;
+        Whatsapp?: string;
+        Alamat?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -366,6 +386,7 @@ declare namespace SerenPro.Administration {
         const updatePermission = "Administration:Security";
         const enum Fields {
             UserId = "UserId",
+            KodeAnggota = "KodeAnggota",
             Username = "Username",
             Source = "Source",
             PasswordHash = "PasswordHash",
@@ -377,6 +398,12 @@ declare namespace SerenPro.Administration {
             IsActive = "IsActive",
             Password = "Password",
             PasswordConfirm = "PasswordConfirm",
+            TempatLahir = "TempatLahir",
+            TanggalLahir = "TanggalLahir",
+            JenisKelamin = "JenisKelamin",
+            Telepon = "Telepon",
+            Whatsapp = "Whatsapp",
+            Alamat = "Alamat",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
