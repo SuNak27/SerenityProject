@@ -1,0 +1,52 @@
+{
+  "RootNamespace": "SerenPro",
+  "ServerTypings": {
+    "LocalTexts": true
+  },
+  "Restore": {
+    "Exclude": [
+      "/wwwroot/Scripts/serenity/Serenity.CoreLib*.*"
+    ]
+  },
+  "Connections": [
+    {
+      "Key": "MasterData",
+      "Tables": [
+        {
+          "Tablename": "buku",
+          "Identifier": "Buku",
+          "Module": "Perpustakaan",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "kategori",
+          "Identifier": "Kategori",
+          "Module": "Perpustakaan",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "peminjaman",
+          "Identifier": "Peminjaman",
+          "Module": "Perpustakaan",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "peminjamanbuku",
+          "Identifier": "Peminjamanbuku",
+          "Module": "Perpustakaan",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "rak",
+          "Identifier": "Rak",
+          "Module": "Perpustakaan",
+          "PermissionKey": "Administration:General"
+        }
+      ]
+    }
+  ],
+  "UpgradeInfo": {
+    "InitialType": "Community",
+    "InitialVersion": "5.2.4.0"
+  }
+}
