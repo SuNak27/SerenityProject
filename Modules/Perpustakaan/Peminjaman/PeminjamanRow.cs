@@ -31,7 +31,7 @@ namespace SerenPro.Perpustakaan
         }
 
         [DisplayName("Anggota"), ForeignKey("[perpustakaan_default_v1].[Users]", "UserId"), LeftJoin("jUser")]
-        [LookupEditor(typeof(SerenPro.Administration.Entities.UserRow), InplaceAdd = true, DialogType = "SerenPro.Administration.User")]
+        [LookupEditor(typeof(SerenPro.Administration.Entities.UserRow), InplaceAdd = true, DialogType = "Administration.User")]
         public int? IdUser
         {
             get => fields.IdUser[this];
