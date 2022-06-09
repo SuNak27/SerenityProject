@@ -4,6 +4,7 @@ using Serenity.Data;
 using Serenity.Reporting;
 using Serenity.Services;
 using Serenity.Web;
+using Serenity.Extensions;
 using System;
 using System.Data;
 using System.Globalization;
@@ -34,6 +35,12 @@ namespace SerenPro.Perpustakaan.Endpoints
             [FromServices] IBukuDeleteHandler handler)
         {
             return handler.Delete(uow, request);
+        }
+
+        public GetNextNumberResponse GetNextNumber(IDbConnection connection, GetNextNumberRequest request,
+        [FromServices] IBukuGetNextNumberHandler handler)
+        {
+            return handler.GetNextNumber(connection, request);
         }
 
         [HttpPost]

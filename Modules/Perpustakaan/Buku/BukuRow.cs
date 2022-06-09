@@ -53,28 +53,28 @@ namespace SerenPro.Perpustakaan
             set => fields.JudulBuku[this] = value;
         }
 
-        [DisplayName("Penerbit"), Size(100)]
+        [DisplayName("Penerbit"), Size(100), QuickSearch]
         public string Penerbit
         {
             get => fields.Penerbit[this];
             set => fields.Penerbit[this] = value;
         }
 
-        [DisplayName("Pengarang"), Size(100)]
+        [DisplayName("Pengarang"), Size(100), QuickSearch]
         public string Pengarang
         {
             get => fields.Pengarang[this];
             set => fields.Pengarang[this] = value;
         }
 
-        [DisplayName("Tahun Buku")]
+        [DisplayName("Tahun Buku"), QuickSearch(SearchType.Equals, numericOnly: 1)]
         public DateTime? TahunBuku
         {
             get => fields.TahunBuku[this];
             set => fields.TahunBuku[this] = value;
         }
 
-        [DisplayName("Deskripsi Buku")]
+        [DisplayName("Deskripsi Buku"), QuickSearch]
         public string DeskripsiBuku
         {
             get => fields.DeskripsiBuku[this];

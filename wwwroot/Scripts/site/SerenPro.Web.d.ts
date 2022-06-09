@@ -1,5 +1,6 @@
 ﻿/// <reference types="serenity.corelib" />
 /// <reference types="jquery" />
+/// <reference types="serenity.extensions" />
 /// <reference types="jquery.blockui" />
 /// <reference types="jquery.validation" />
 /// <reference types="jqueryui" />
@@ -599,12 +600,14 @@ declare namespace SerenPro.Perpustakaan {
         function Create(request: Serenity.SaveRequest<BukuRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<BukuRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function GetNextNumber(request: Serenity.Extensions.GetNextNumberRequest, onSuccess?: (response: Serenity.Extensions.GetNextNumberResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<BukuRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<BukuRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Perpustakaan/Buku/Create",
             Update = "Perpustakaan/Buku/Update",
             Delete = "Perpustakaan/Buku/Delete",
+            GetNextNumber = "Perpustakaan/Buku/GetNextNumber",
             Retrieve = "Perpustakaan/Buku/Retrieve",
             List = "Perpustakaan/Buku/List"
         }
@@ -726,12 +729,14 @@ declare namespace SerenPro.Perpustakaan {
         function Update(request: Serenity.SaveRequest<PeminjamanRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<PeminjamanRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function GetNextNumber(request: Serenity.Extensions.GetNextNumberRequest, onSuccess?: (response: Serenity.Extensions.GetNextNumberResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<PeminjamanRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Perpustakaan/Peminjaman/Create",
             Update = "Perpustakaan/Peminjaman/Update",
             Delete = "Perpustakaan/Peminjaman/Delete",
             Retrieve = "Perpustakaan/Peminjaman/Retrieve",
+            GetNextNumber = "Perpustakaan/Peminjaman/GetNextNumber",
             List = "Perpustakaan/Peminjaman/List"
         }
     }
@@ -1137,6 +1142,9 @@ declare namespace SerenPro.Perpustakaan {
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
         protected form: BukuForm;
+        constructor();
+        protected afterLoadEntity(): void;
+        private getNextNumber;
     }
 }
 declare namespace SerenPro.Perpustakaan {
@@ -1148,7 +1156,11 @@ declare namespace SerenPro.Perpustakaan {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
+        protected getQuickSearchFields(): Serenity.QuickSearchField[];
         protected getSlickOptions(): Slick.GridOptions;
+        protected createSlickGrid(): Slick.Grid;
     }
 }
 declare namespace SerenPro.Perpustakaan {
@@ -1181,6 +1193,8 @@ declare namespace SerenPro.Perpustakaan {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getSlickOptions(): Slick.GridOptions;
+        protected createSlickGrid(): Slick.Grid;
     }
 }
 declare namespace SerenPro.Perpustakaan {
@@ -1199,6 +1213,9 @@ declare namespace SerenPro.Perpustakaan {
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
         protected form: PeminjamanForm;
+        constructor();
+        protected afterLoadEntity(): void;
+        private getNextNumber;
     }
 }
 declare namespace SerenPro.Perpustakaan {
@@ -1210,6 +1227,8 @@ declare namespace SerenPro.Perpustakaan {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getSlickOptions(): Slick.GridOptions;
+        protected createSlickGrid(): Slick.Grid;
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         protected getColumns(): Slick.Column[];
         protected onClick(e: JQueryEventObject, row: number, cell: number): void;
@@ -1238,6 +1257,8 @@ declare namespace SerenPro.Perpustakaan {
         protected getService(): string;
         protected createView(): Slick.RemoteView<PeminjamanRow>;
         constructor(container: JQuery);
+        protected getSlickOptions(): Slick.GridOptions;
+        protected createSlickGrid(): Slick.Grid;
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         protected getButtons(): Serenity.ToolButton[];
     }
@@ -1264,6 +1285,8 @@ declare namespace SerenPro.Perpustakaan {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getSlickOptions(): Slick.GridOptions;
+        protected createSlickGrid(): Slick.Grid;
     }
 }
 declare namespace SerenPro.Perpustakaan {

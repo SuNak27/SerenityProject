@@ -3,6 +3,7 @@ using Serenity;
 using Serenity.Data;
 using Serenity.Reporting;
 using Serenity.Services;
+using Serenity.Extensions;
 using Serenity.Web;
 using System;
 using System.Data;
@@ -41,6 +42,12 @@ namespace SerenPro.Perpustakaan.Endpoints
             [FromServices] IPeminjamanRetrieveHandler handler)
         {
             return handler.Retrieve(connection, request);
+        }
+
+        public GetNextNumberResponse GetNextNumber(IDbConnection connection, GetNextNumberRequest request,
+        [FromServices] IPeminjamanGetNextNumberHandler handler)
+        {
+            return handler.GetNextNumber(connection, request);
         }
 
         [HttpPost]

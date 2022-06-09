@@ -79,3 +79,7 @@
 .s-PermissionCheckEditor .effective-permission.deny {
   background-image: url(../serenity/images/slash.png);
 }
+
+.slick-row-selected {
+  background-color: rgba(13, 110, 253, .3);
+}

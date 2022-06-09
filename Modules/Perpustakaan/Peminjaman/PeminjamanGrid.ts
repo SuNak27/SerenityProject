@@ -14,6 +14,21 @@ namespace SerenPro.Perpustakaan {
             super(container);
         }
 
+        protected getSlickOptions(): Slick.GridOptions {
+            let opt = super.getSlickOptions();
+            opt.rowHeight = 35;
+            opt.enableTextSelectionOnCells = true;
+            opt.selectedCellCssClass = "slick-row-selected";
+            opt.enableCellNavigation = true;
+            return opt;
+        }
+
+        protected createSlickGrid(): Slick.Grid {
+            var grid = super.createSlickGrid();
+            grid.setSelectionModel(new Slick.RowSelectionModel());
+            return grid;
+        }
+
         protected getQuickFilters() {
             var flt = super.getQuickFilters();
             var q = Q.parseQueryString();
@@ -33,7 +48,7 @@ namespace SerenPro.Perpustakaan {
                 id: "Kembalikan",
                 field: null,
                 name: 'aksi',
-                format: ctx => '<a class="inline-action-kembali btn btn-warning btn-sm" title="Pengembalian Buku" style="padding-top: 2px; color: white;"' + '<i class="fas fa-sign-out"></i>Kembalikan</a>',
+                format: ctx => '<a class="inline-action-kembali btn btn-warning btn-sm" title="Pengembalian Buku" style="color: white;"' + '<i class="fas fa-sign-out"></i>Kembalikan</a>',
                 width: 120,
                 minWidth: 120,
                 maxWidth: 120
