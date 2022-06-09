@@ -1,38 +1,38 @@
 ﻿namespace SerenPro.Perpustakaan {
-    export interface PeminjamanForm {
+    export interface PengembalianForm {
         KodePeminjaman: Serenity.StringEditor;
         IdUser: Serenity.LookupEditor;
         BukuList: Serenity.LookupEditor;
-        IdStatus: Serenity.LookupEditor;
+        Status: Serenity.IntegerEditor;
         TglPinjam: Serenity.DateEditor;
         TglKembali: Serenity.DateEditor;
         Denda: Serenity.IntegerEditor;
     }
 
-    export class PeminjamanForm extends Serenity.PrefixedContext {
-        static formKey = 'Perpustakaan.Peminjaman';
+    export class PengembalianForm extends Serenity.PrefixedContext {
+        static formKey = 'Perpustakaan.Pengembalian';
         private static init: boolean;
 
         constructor(prefix: string) {
             super(prefix);
 
-            if (!PeminjamanForm.init)  {
-                PeminjamanForm.init = true;
+            if (!PengembalianForm.init)  {
+                PengembalianForm.init = true;
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
                 var w1 = s.LookupEditor;
-                var w2 = s.DateEditor;
-                var w3 = s.IntegerEditor;
+                var w2 = s.IntegerEditor;
+                var w3 = s.DateEditor;
 
-                Q.initFormType(PeminjamanForm, [
+                Q.initFormType(PengembalianForm, [
                     'KodePeminjaman', w0,
                     'IdUser', w1,
                     'BukuList', w1,
-                    'IdStatus', w1,
-                    'TglPinjam', w2,
-                    'TglKembali', w2,
-                    'Denda', w3
+                    'Status', w2,
+                    'TglPinjam', w3,
+                    'TglKembali', w3,
+                    'Denda', w2
                 ]);
             }
         }

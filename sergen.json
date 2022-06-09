@@ -41,6 +41,12 @@
           "Identifier": "Rak",
           "Module": "Perpustakaan",
           "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "status",
+          "Identifier": "Status",
+          "Module": "Perpustakaan",
+          "PermissionKey": "Administration:General"
         }
       ]
     }

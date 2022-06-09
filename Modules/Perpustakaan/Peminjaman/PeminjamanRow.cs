@@ -54,11 +54,19 @@ namespace SerenPro.Perpustakaan
             set => fields.KodeAnggota[this] = value;
         }
 
-        [DisplayName("Status")]
-        public Status? Status
+        [DisplayName("Status"), ForeignKey("Status", "Id"), LeftJoin("lStatus")]
+        [LookupEditor(typeof(StatusRow), InplaceAdd = true, DialogType = "Perpustakaan.Status")]
+        public Int32? IdStatus
         {
-            get => (Status?)fields.Status[this];
-            set => fields.Status[this] = (Int32?)value;
+            get => fields.IdStatus[this];
+            set => fields.IdStatus[this] = value;
+        }
+
+        [DisplayName("Status"), Expression("lStatus.Status")]
+        public String Status
+        {
+            get => fields.Status[this];
+            set => fields.Status[this] = value;
         }
 
         [DisplayName("Tgl Pinjam")]
@@ -99,7 +107,8 @@ namespace SerenPro.Perpustakaan
             public Int32Field IdUser;
             public ListField<Int32> BukuList;
             public StringField KodeAnggota;
-            public Int32Field Status;
+            public Int32Field IdStatus;
+            public StringField Status;
             public DateTimeField TglPinjam;
             public DateTimeField TglKembali;
             public Int32Field Denda;

@@ -673,7 +673,7 @@ declare namespace SerenPro.Perpustakaan {
         KodePeminjaman: Serenity.StringEditor;
         IdUser: Serenity.LookupEditor;
         BukuList: Serenity.LookupEditor;
-        Status: Serenity.EnumEditor;
+        IdStatus: Serenity.LookupEditor;
         TglPinjam: Serenity.DateEditor;
         TglKembali: Serenity.DateEditor;
         Denda: Serenity.IntegerEditor;
@@ -691,7 +691,8 @@ declare namespace SerenPro.Perpustakaan {
         IdUser?: number;
         BukuList?: number[];
         KodeAnggota?: string;
-        Status?: Status;
+        IdStatus?: number;
+        Status?: string;
         TglPinjam?: string;
         TglKembali?: string;
         Denda?: number;
@@ -710,6 +711,7 @@ declare namespace SerenPro.Perpustakaan {
             IdUser = "IdUser",
             BukuList = "BukuList",
             KodeAnggota = "KodeAnggota",
+            IdStatus = "IdStatus",
             Status = "Status",
             TglPinjam = "TglPinjam",
             TglKembali = "TglKembali",
@@ -752,6 +754,27 @@ declare namespace SerenPro.Perpustakaan {
             IdPeminjaman = "IdPeminjaman",
             IdBuku = "IdBuku"
         }
+    }
+}
+declare namespace SerenPro.Perpustakaan {
+    class PengembalianColumns {
+        static columnsKey: string;
+    }
+}
+declare namespace SerenPro.Perpustakaan {
+    interface PengembalianForm {
+        KodePeminjaman: Serenity.StringEditor;
+        IdUser: Serenity.LookupEditor;
+        BukuList: Serenity.LookupEditor;
+        Status: Serenity.IntegerEditor;
+        TglPinjam: Serenity.DateEditor;
+        TglKembali: Serenity.DateEditor;
+        Denda: Serenity.IntegerEditor;
+    }
+    class PengembalianForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
     }
 }
 declare namespace SerenPro.Perpustakaan {
@@ -808,9 +831,56 @@ declare namespace SerenPro.Perpustakaan {
     }
 }
 declare namespace SerenPro.Perpustakaan {
-    enum Status {
-        Dipinjam = 1,
-        Dikembalikan = 2
+    class StatusColumns {
+        static columnsKey: string;
+    }
+}
+declare namespace SerenPro.Perpustakaan {
+    interface StatusForm {
+        Status: Serenity.StringEditor;
+    }
+    class StatusForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace SerenPro.Perpustakaan {
+    interface StatusRow {
+        Id?: number;
+        Status?: string;
+    }
+    namespace StatusRow {
+        const idProperty = "Id";
+        const nameProperty = "Status";
+        const localTextPrefix = "Perpustakaan.Status";
+        const lookupKey = "Perpustakaan.Status";
+        function getLookup(): Q.Lookup<StatusRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            Id = "Id",
+            Status = "Status"
+        }
+    }
+}
+declare namespace SerenPro.Perpustakaan {
+    namespace StatusService {
+        const baseUrl = "Perpustakaan/Status";
+        function Create(request: Serenity.SaveRequest<StatusRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<StatusRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<StatusRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<StatusRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Perpustakaan/Status/Create",
+            Update = "Perpustakaan/Status/Update",
+            Delete = "Perpustakaan/Status/Delete",
+            Retrieve = "Perpustakaan/Status/Retrieve",
+            List = "Perpustakaan/Status/List"
+        }
     }
 }
 declare namespace SerenPro {
@@ -1131,6 +1201,36 @@ declare namespace SerenPro.Perpustakaan {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected getColumns(): Slick.Column[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
+    }
+}
+declare namespace SerenPro.Perpustakaan {
+    class PengembalianDialog extends Serenity.EntityDialog<PeminjamanRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: PengembalianForm;
+    }
+}
+declare namespace SerenPro.Perpustakaan {
+    class PengembalianGrid extends Serenity.EntityGrid<PeminjamanRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof PengembalianDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected createView(): Slick.RemoteView<PeminjamanRow>;
+        constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected getButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace SerenPro.Perpustakaan {
@@ -1150,6 +1250,30 @@ declare namespace SerenPro.Perpustakaan {
     class RakGrid extends Serenity.EntityGrid<RakRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof RakDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace SerenPro.Perpustakaan {
+    class StatusDialog extends Serenity.EntityDialog<StatusRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: StatusForm;
+    }
+}
+declare namespace SerenPro.Perpustakaan {
+    class StatusGrid extends Serenity.EntityGrid<StatusRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof StatusDialog;
         protected getIdProperty(): string;
         protected getInsertPermission(): string;
         protected getLocalTextPrefix(): string;

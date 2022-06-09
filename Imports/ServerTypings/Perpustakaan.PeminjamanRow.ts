@@ -5,7 +5,8 @@
         IdUser?: number;
         BukuList?: number[];
         KodeAnggota?: string;
-        Status?: Status;
+        IdStatus?: number;
+        Status?: string;
         TglPinjam?: string;
         TglKembali?: string;
         Denda?: number;
@@ -26,6 +27,7 @@
             IdUser = "IdUser",
             BukuList = "BukuList",
             KodeAnggota = "KodeAnggota",
+            IdStatus = "IdStatus",
             Status = "Status",
             TglPinjam = "TglPinjam",
             TglKembali = "TglKembali",

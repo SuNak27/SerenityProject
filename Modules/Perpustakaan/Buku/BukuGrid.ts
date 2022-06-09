@@ -1,5 +1,4 @@
-﻿
-namespace SerenPro.Perpustakaan {
+﻿namespace SerenPro.Perpustakaan {
 
     @Serenity.Decorators.registerClass()
     export class BukuGrid extends Serenity.EntityGrid<BukuRow, any> {
@@ -12,6 +11,12 @@ namespace SerenPro.Perpustakaan {
 
         constructor(container: JQuery) {
             super(container);
+        }
+
+        protected getSlickOptions(): Slick.GridOptions {
+            let opt = super.getSlickOptions();
+            opt.rowHeight = 150;
+            return opt;
         }
     }
 }

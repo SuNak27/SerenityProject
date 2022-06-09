@@ -86,11 +86,17 @@ namespace MVC
             public static class Peminjaman
             {
                 public const string PeminjamanIndex = "~/Modules/Perpustakaan/Peminjaman/PeminjamanIndex.cshtml";
+                public const string PengembalianIndex = "~/Modules/Perpustakaan/Peminjaman/PengembalianIndex.cshtml";
             }
 
             public static class Rak
             {
                 public const string RakIndex = "~/Modules/Perpustakaan/Rak/RakIndex.cshtml";
+            }
+
+            public static class Status
+            {
+                public const string StatusIndex = "~/Modules/Perpustakaan/Status/StatusIndex.cshtml";
             }
         }
 

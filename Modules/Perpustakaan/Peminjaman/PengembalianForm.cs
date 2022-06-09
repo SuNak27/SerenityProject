@@ -6,21 +6,18 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.IO;
 
-namespace SerenPro.Perpustakaan.Columns
+namespace SerenPro.Perpustakaan.Forms
 {
-    [ColumnsScript("Perpustakaan.Peminjaman")]
+    [FormScript("Perpustakaan.Pengembalian")]
     [BasedOnRow(typeof(PeminjamanRow), CheckNames = true)]
-    public class PeminjamanColumns
+    public class PengembalianForm
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        public int Id { get; set; }
-        [EditLink]
         public string KodePeminjaman { get; set; }
-        public string KodeAnggota { get; set; }
-        [Width(200), BukuListFormatter]
+        public int IdUser { get; set; }
         public List<Int32> BukuList { get; set; }
-        [Width(150), QuickFilter]
-        public String Status { get; set; }
+        [DefaultValue("2"), Hidden]
+        public Int32 Status { get; set; }
+        [DefaultValue("now")]
         public DateTime TglPinjam { get; set; }
         public DateTime TglKembali { get; set; }
         public int Denda { get; set; }

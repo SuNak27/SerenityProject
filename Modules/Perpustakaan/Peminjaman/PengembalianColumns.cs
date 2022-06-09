@@ -8,9 +8,9 @@ using System.IO;
 
 namespace SerenPro.Perpustakaan.Columns
 {
-    [ColumnsScript("Perpustakaan.Peminjaman")]
+    [ColumnsScript("Perpustakaan.Pengembalian")]
     [BasedOnRow(typeof(PeminjamanRow), CheckNames = true)]
-    public class PeminjamanColumns
+    public class PengembalianColumns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public int Id { get; set; }

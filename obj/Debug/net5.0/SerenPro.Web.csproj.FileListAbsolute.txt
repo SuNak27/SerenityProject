@@ -484,3 +484,5 @@ C:\Users\Alfad\OneDrive\Documents\Santri\SerenPro\SerenPro.Web\obj\Debug\net5.0\
 C:\Users\Alfad\OneDrive\Documents\Santri\SerenPro\SerenPro.Web\obj\Debug\net5.0\SerenPro.Web.genruntimeconfig.cache
 C:\Users\Alfad\OneDrive\Documents\Santri\SerenPro\SerenPro.Web\obj\Debug\net5.0\Razor\Modules\Perpustakaan\Peminjaman\PeminjamanIndex.cshtml.g.cs
 C:\Users\Alfad\OneDrive\Documents\Santri\SerenPro\SerenPro.Web\obj\Debug\net5.0\Razor\Modules\Perpustakaan\Rak\RakIndex.cshtml.g.cs
+C:\Users\Alfad\OneDrive\Documents\Santri\SerenPro\SerenPro.Web\obj\Debug\net5.0\Razor\Modules\Perpustakaan\Peminjaman\PengembalianIndex.cshtml.g.cs
+C:\Users\Alfad\OneDrive\Documents\Santri\SerenPro\SerenPro.Web\obj\Debug\net5.0\Razor\Modules\Perpustakaan\Status\StatusIndex.cshtml.g.cs
