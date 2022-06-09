@@ -32,7 +32,7 @@ namespace SerenPro.Perpustakaan
         }
 
         [DisplayName("Gambar")]
-        [ImageUploadEditor(FileNameFormat = "Buku/BukuImage/~")]
+        [ImageUploadEditor(FilenameFormat = "Buku/BukuImage/~")]
         public string Gambar
         {
             get => fields.Gambar[this];

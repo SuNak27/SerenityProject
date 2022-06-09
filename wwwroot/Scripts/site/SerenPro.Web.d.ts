@@ -530,7 +530,7 @@ declare namespace SerenPro.Perpustakaan {
         KodeBuku: Serenity.StringEditor;
         IdKategori: Serenity.LookupEditor;
         IdRak: Serenity.LookupEditor;
-        Gambar: Serenity.StringEditor;
+        Gambar: Serenity.ImageUploadEditor;
         Isbn: Serenity.IntegerEditor;
         JudulBuku: Serenity.StringEditor;
         Penerbit: Serenity.StringEditor;
@@ -1148,6 +1148,15 @@ declare namespace SerenPro.Perpustakaan {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getSlickOptions(): Slick.GridOptions;
+    }
+}
+declare namespace SerenPro.Perpustakaan {
+    class InlineImageFormatter implements Slick.Formatter, Serenity.IInitializeColumn {
+        format(ctx: Slick.FormatterContext): string;
+        initializeColumn(column: Slick.Column): void;
+        fileProperty: string;
+        thumb: boolean;
     }
 }
 declare namespace SerenPro.Perpustakaan {

@@ -16,13 +16,14 @@ namespace SerenPro.Perpustakaan.Columns
         public int Id { get; set; }
         [EditLink]
         public string KodeBuku { get; set; }
-        [QuickFilter]
-        public string NamaKategori { get; set; }
-        [QuickFilter]
-        public string NamaRak { get; set; }
+        public string JudulBuku { get; set; }
+        [InlineImageFormatter, Width(150)]
         public string Gambar { get; set; }
         public int Isbn { get; set; }
-        public string JudulBuku { get; set; }
+        [QuickFilter, Width(150)]
+        public string NamaKategori { get; set; }
+        [QuickFilter, Width(150)]
+        public string NamaRak { get; set; }
         public string Penerbit { get; set; }
         public string Pengarang { get; set; }
         public DateTime TahunBuku { get; set; }
