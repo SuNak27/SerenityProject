@@ -2,7 +2,7 @@
     export interface PengembalianForm {
         KodePeminjaman: Serenity.StringEditor;
         IdUser: Serenity.LookupEditor;
-        BukuList: Serenity.LookupEditor;
+        BukuList: PeminjamanbukuEditor;
         Status: Serenity.IntegerEditor;
         TglPinjam: Serenity.DateEditor;
         TglKembali: Serenity.DateEditor;
@@ -22,17 +22,18 @@
                 var s = Serenity;
                 var w0 = s.StringEditor;
                 var w1 = s.LookupEditor;
-                var w2 = s.IntegerEditor;
-                var w3 = s.DateEditor;
+                var w2 = PeminjamanbukuEditor;
+                var w3 = s.IntegerEditor;
+                var w4 = s.DateEditor;
 
                 Q.initFormType(PengembalianForm, [
                     'KodePeminjaman', w0,
                     'IdUser', w1,
-                    'BukuList', w1,
-                    'Status', w2,
-                    'TglPinjam', w3,
-                    'TglKembali', w3,
-                    'Denda', w2
+                    'BukuList', w2,
+                    'Status', w3,
+                    'TglPinjam', w4,
+                    'TglKembali', w4,
+                    'Denda', w3
                 ]);
             }
         }

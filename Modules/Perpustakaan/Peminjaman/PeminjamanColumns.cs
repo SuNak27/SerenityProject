@@ -17,8 +17,9 @@ namespace SerenPro.Perpustakaan.Columns
         [EditLink]
         public string KodePeminjaman { get; set; }
         public string KodeAnggota { get; set; }
-        [Width(200), BukuListFormatter]
-        public List<Int32> BukuList { get; set; }
+        public string Username { get; set; }
+        [BukuListFormatter, Width(150)]
+        public List<PeminjamanbukuRow> BukuList { get; set; }
         [Width(150), QuickFilter]
         public String Status { get; set; }
         public DateTime TglPinjam { get; set; }

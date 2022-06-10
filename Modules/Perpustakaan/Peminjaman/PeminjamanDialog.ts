@@ -2,6 +2,7 @@
 namespace SerenPro.Perpustakaan {
 
     @Serenity.Decorators.registerClass()
+    @Serenity.Decorators.panel()
     export class PeminjamanDialog extends Serenity.EntityDialog<PeminjamanRow, any> {
         protected getFormKey() { return PeminjamanForm.formKey; }
         protected getIdProperty() { return PeminjamanRow.idProperty; }

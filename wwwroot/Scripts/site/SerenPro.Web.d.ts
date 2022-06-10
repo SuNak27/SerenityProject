@@ -707,7 +707,7 @@ declare namespace SerenPro.Perpustakaan {
     interface PeminjamanForm {
         KodePeminjaman: Serenity.StringEditor;
         IdUser: Serenity.LookupEditor;
-        BukuList: Serenity.LookupEditor;
+        BukuList: PeminjamanbukuEditor;
         IdStatus: Serenity.LookupEditor;
         TglPinjam: Serenity.DateEditor;
         TglKembali: Serenity.DateEditor;
@@ -724,13 +724,14 @@ declare namespace SerenPro.Perpustakaan {
         Id?: number;
         KodePeminjaman?: string;
         IdUser?: number;
-        BukuList?: number[];
         KodeAnggota?: string;
+        Username?: string;
         IdStatus?: number;
         Status?: string;
         TglPinjam?: string;
         TglKembali?: string;
         Denda?: number;
+        BukuList?: PeminjamanbukuRow[];
     }
     namespace PeminjamanRow {
         const idProperty = "Id";
@@ -744,13 +745,14 @@ declare namespace SerenPro.Perpustakaan {
             Id = "Id",
             KodePeminjaman = "KodePeminjaman",
             IdUser = "IdUser",
-            BukuList = "BukuList",
             KodeAnggota = "KodeAnggota",
+            Username = "Username",
             IdStatus = "IdStatus",
             Status = "Status",
             TglPinjam = "TglPinjam",
             TglKembali = "TglKembali",
-            Denda = "Denda"
+            Denda = "Denda",
+            BukuList = "BukuList"
         }
     }
 }
@@ -774,10 +776,31 @@ declare namespace SerenPro.Perpustakaan {
     }
 }
 declare namespace SerenPro.Perpustakaan {
+    class PeminjamanbukuColumns {
+        static columnsKey: string;
+    }
+}
+declare namespace SerenPro.Perpustakaan {
+    interface PeminjamanbukuForm {
+        IdBuku: Serenity.LookupEditor;
+    }
+    class PeminjamanbukuForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace SerenPro.Perpustakaan {
     interface PeminjamanbukuRow {
         Id?: number;
         IdPeminjaman?: number;
         IdBuku?: number;
+        IdBukuJudulBuku?: string;
+        IdBukuKodeBuku?: string;
+        IdBukuGambarBuku?: string;
+        IdBukuPenerbit?: string;
+        IdBukuPengarang?: string;
+        IdBukuDeskripsiBuku?: string;
     }
     namespace PeminjamanbukuRow {
         const idProperty = "Id";
@@ -789,7 +812,30 @@ declare namespace SerenPro.Perpustakaan {
         const enum Fields {
             Id = "Id",
             IdPeminjaman = "IdPeminjaman",
-            IdBuku = "IdBuku"
+            IdBuku = "IdBuku",
+            IdBukuJudulBuku = "IdBukuJudulBuku",
+            IdBukuKodeBuku = "IdBukuKodeBuku",
+            IdBukuGambarBuku = "IdBukuGambarBuku",
+            IdBukuPenerbit = "IdBukuPenerbit",
+            IdBukuPengarang = "IdBukuPengarang",
+            IdBukuDeskripsiBuku = "IdBukuDeskripsiBuku"
+        }
+    }
+}
+declare namespace SerenPro.Perpustakaan {
+    namespace PeminjamanbukuService {
+        const baseUrl = "Perpustakaan/Peminjamanbuku";
+        function Create(request: Serenity.SaveRequest<PeminjamanbukuRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<PeminjamanbukuRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<PeminjamanbukuRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<PeminjamanbukuRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Perpustakaan/Peminjamanbuku/Create",
+            Update = "Perpustakaan/Peminjamanbuku/Update",
+            Delete = "Perpustakaan/Peminjamanbuku/Delete",
+            Retrieve = "Perpustakaan/Peminjamanbuku/Retrieve",
+            List = "Perpustakaan/Peminjamanbuku/List"
         }
     }
 }
@@ -802,7 +848,7 @@ declare namespace SerenPro.Perpustakaan {
     interface PengembalianForm {
         KodePeminjaman: Serenity.StringEditor;
         IdUser: Serenity.LookupEditor;
-        BukuList: Serenity.LookupEditor;
+        BukuList: PeminjamanbukuEditor;
         Status: Serenity.IntegerEditor;
         TglPinjam: Serenity.DateEditor;
         TglKembali: Serenity.DateEditor;
@@ -1271,8 +1317,28 @@ declare namespace SerenPro.Perpustakaan {
     }
 }
 declare namespace SerenPro.Perpustakaan {
-    class BukuListFormatter implements Slick.Formatter {
+    class JudulBukuFormatter implements Slick.Formatter {
         format(ctx: Slick.FormatterContext): string;
+    }
+    class PenerbitFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+    class PengarangFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+    class DeskripsiFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+    class GambarFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+    class KodeBukuFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace SerenPro.Perpustakaan {
+    class BukuListFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): any;
     }
 }
 declare namespace SerenPro.Perpustakaan {
@@ -1318,6 +1384,8 @@ declare namespace SerenPro.Perpustakaan {
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
         protected form: PengembalianForm;
+        protected getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
     }
 }
 declare namespace SerenPro.Perpustakaan {
@@ -1334,6 +1402,27 @@ declare namespace SerenPro.Perpustakaan {
         protected createSlickGrid(): Slick.Grid;
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         protected getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace SerenPro.Perpustakaan {
+    class PeminjamanbukuEditDialog extends Serenity.Extensions.GridEditorDialog<PeminjamanbukuRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected form: PeminjamanbukuForm;
+        constructor();
+    }
+}
+declare namespace SerenPro.Perpustakaan {
+    class PeminjamanbukuEditor extends Serenity.Extensions.GridEditorBase<PeminjamanbukuRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof PeminjamanbukuEditDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        protected getAddButtonCaption(): string;
+        protected validateEntity(row: PeminjamanbukuRow, id: number): boolean;
+        protected getSlickOptions(): Slick.GridOptions;
+        protected createSlickGrid(): Slick.Grid;
+        disableAddButton(): void;
     }
 }
 declare namespace SerenPro.Perpustakaan {

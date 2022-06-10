@@ -14,7 +14,8 @@ namespace SerenPro.Perpustakaan.Forms
     {
         public string KodePeminjaman { get; set; }
         public int IdUser { get; set; }
-        public List<Int32> BukuList { get; set; }
+        [PeminjamanbukuEditor, IgnoreName]
+        public List<PeminjamanbukuRow> BukuList { get; set; }
         [DefaultValue("2"), Hidden]
         public Int32 Status { get; set; }
         [DefaultValue("now")]

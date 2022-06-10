@@ -3,13 +3,14 @@
         Id?: number;
         KodePeminjaman?: string;
         IdUser?: number;
-        BukuList?: number[];
         KodeAnggota?: string;
+        Username?: string;
         IdStatus?: number;
         Status?: string;
         TglPinjam?: string;
         TglKembali?: string;
         Denda?: number;
+        BukuList?: PeminjamanbukuRow[];
     }
 
     export namespace PeminjamanRow {
@@ -25,13 +26,14 @@
             Id = "Id",
             KodePeminjaman = "KodePeminjaman",
             IdUser = "IdUser",
-            BukuList = "BukuList",
             KodeAnggota = "KodeAnggota",
+            Username = "Username",
             IdStatus = "IdStatus",
             Status = "Status",
             TglPinjam = "TglPinjam",
             TglKembali = "TglKembali",
-            Denda = "Denda"
+            Denda = "Denda",
+            BukuList = "BukuList"
         }
     }
 }

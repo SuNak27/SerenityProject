@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System.Linq;
+using System.Linq.Expressions;
 using Serenity;
 using Serenity.ComponentModel;
 using Serenity.Data;
@@ -24,7 +25,7 @@ namespace SerenPro.Perpustakaan
             set => fields.Id[this] = value;
         }
 
-        [DisplayName("Kode Buku"), Size(11), QuickSearch]
+        [DisplayName("Kode Buku"), Size(11), QuickSearch, LookupInclude]
         public string KodeBuku
         {
             get => fields.KodeBuku[this];
@@ -32,7 +33,7 @@ namespace SerenPro.Perpustakaan
         }
 
         [DisplayName("Gambar")]
-        [ImageUploadEditor(FilenameFormat = "Buku/BukuImage/~")]
+        [ImageUploadEditor(FilenameFormat = "Buku/BukuImage/~"), LookupInclude]
         public string Gambar
         {
             get => fields.Gambar[this];
@@ -53,14 +54,14 @@ namespace SerenPro.Perpustakaan
             set => fields.JudulBuku[this] = value;
         }
 
-        [DisplayName("Penerbit"), Size(100), QuickSearch]
+        [DisplayName("Penerbit"), Size(100), QuickSearch, LookupInclude]
         public string Penerbit
         {
             get => fields.Penerbit[this];
             set => fields.Penerbit[this] = value;
         }
 
-        [DisplayName("Pengarang"), Size(100), QuickSearch]
+        [DisplayName("Pengarang"), Size(100), QuickSearch, LookupInclude]
         public string Pengarang
         {
             get => fields.Pengarang[this];
@@ -74,7 +75,7 @@ namespace SerenPro.Perpustakaan
             set => fields.TahunBuku[this] = value;
         }
 
-        [DisplayName("Deskripsi Buku"), QuickSearch]
+        [DisplayName("Deskripsi Buku"), QuickSearch, LookupInclude]
         public string DeskripsiBuku
         {
             get => fields.DeskripsiBuku[this];

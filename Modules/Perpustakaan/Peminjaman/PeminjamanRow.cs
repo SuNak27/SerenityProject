@@ -38,20 +38,26 @@ namespace SerenPro.Perpustakaan
             set => fields.IdUser[this] = value;
         }
 
-        [DisplayName("Buku")]
-        [LookupEditor(typeof(BukuRow), Multiple = true, InplaceAdd = true), NotMapped]
-        [LinkingSetRelation(typeof(PeminjamanbukuRow), "IdPeminjaman", "IdBuku")]
-        public List<Int32> BukuList
-        {
-            get => fields.BukuList[this];
-            set => fields.BukuList[this] = value;
-        }
-
-        [DisplayName("Anggota"), Expression("jUser.KodeAnggota")]
+        [DisplayName("Kode Anggota"), Expression("jUser.KodeAnggota")]
         public string KodeAnggota
         {
             get => fields.KodeAnggota[this];
             set => fields.KodeAnggota[this] = value;
+        }
+
+        [DisplayName("Anggota"), Expression("jUser.Username")]
+        public string Username
+        {
+            get => fields.Username[this];
+            set => fields.Username[this] = value;
+        }
+
+        [MasterDetailRelation(foreignKey: "IdPeminjaman", IncludeColumns = "IdBukuJudulBuku")]
+        [DisplayName("Buku List"), NotMapped, MinSelectLevel(SelectLevel.List)]
+        public List<PeminjamanbukuRow> BukuList
+        {
+            get => fields.BukuList[this];
+            set => fields.BukuList[this] = value;
         }
 
         [DisplayName("Status"), ForeignKey("Status", "Id"), LeftJoin("lStatus")]
@@ -105,13 +111,14 @@ namespace SerenPro.Perpustakaan
             public Int32Field Id;
             public StringField KodePeminjaman;
             public Int32Field IdUser;
-            public ListField<Int32> BukuList;
             public StringField KodeAnggota;
+            public StringField Username;
             public Int32Field IdStatus;
             public StringField Status;
             public DateTimeField TglPinjam;
             public DateTimeField TglKembali;
             public Int32Field Denda;
+            public RowListField<PeminjamanbukuRow> BukuList;
         }
     }
 }

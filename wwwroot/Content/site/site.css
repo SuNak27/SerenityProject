@@ -83,3 +83,19 @@
 .slick-row-selected {
   background-color: rgba(13, 110, 253, .3);
 }
+
+.s-Perpustakaan-PeminjamanbukuEditDialog > .size {
+  width: 450px;
+}
+
+.s-Perpustakaan-PeminjamanbukuEditDialog .caption {
+   width: 120px;
+}
+
+.s-Perpustakaan-PeminjamanbukuEditDialog .s-PropertyGrid .categories { 
+  height: 85px; 
+}
+
+.s-Perpustakaan-PeminjamanbukuEditor > .grid-container {
+  height: 220px;
+}
