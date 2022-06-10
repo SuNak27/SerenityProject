@@ -1,6 +1,7 @@
 ﻿namespace SerenPro.Administration {
 
     @Serenity.Decorators.registerClass()
+    @Serenity.Decorators.panel()
     export class UserDialog extends Serenity.EntityDialog<UserRow, any> {
         protected getFormKey() { return UserForm.formKey; }
         protected getIdProperty() { return UserRow.idProperty; }
@@ -10,9 +11,13 @@
         protected getService() { return UserService.baseUrl; }
 
         protected form = new UserForm(this.idPrefix);
+        private loadedState: string;
 
         constructor() {
             super();
+
+            this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
+            Serenity.Extensions.DialogUtils.pendingChangesConfirmation(this.element, () => this.getSaveState() != this.loadedState);
 
             this.form.Password.addValidationRule(this.uniqueName, e => {
                 if (this.form.Password.value.length < 7)
@@ -25,16 +30,60 @@
             });
         }
 
-        protected getToolbarButtons()
-        {
+
+        getSaveState() {
+            try {
+                return $.toJSON(this.getSaveEntity());
+            }
+            catch (e) {
+                return null;
+            }
+        }
+
+        loadResponse(data) {
+            super.loadResponse(data);
+            this.loadedState = this.getSaveState();
+        }
+
+        onSaveSuccess(response) {
+            super.onSaveSuccess(response);
+
+            Q.reloadLookup('Administrtion.User');
+        }
+
+        getTemplate() {
+            return `
+            <div id="~_Tabs" class="s-DialogContent">
+                <ul>
+                    <li><a href="#~_TabInfo"><span>${Q.text("User")}</span></a></li>
+                    <li><a href="#~_TabNotes"><span>${Q.text("Notes")}</span></a></li>
+                </ul>
+                <div id="~_TabInfo" class="tab-pane s-TabInfo">
+                    <div id="~_Toolbar" class="s-DialogToolbar">
+                    </div>
+                    <div class="s-Form">
+                        <form id="~_Form" action="">
+                            <div class="fieldset ui-widget ui-widget-content ui-corner-all">
+                                <div id="~_PropertyGrid"></div>
+                                <div class="clear"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div id="~_TabNotes" class="tab-pane s-TabNotes">
+                </div>
+            </div>`;
+        }
+
+
+        protected getToolbarButtons() {
             let buttons = super.getToolbarButtons();
 
             buttons.push({
                 title: Q.text('Site.UserDialog.EditRolesButton'),
                 cssClass: 'edit-roles-button',
                 icon: 'fa-users text-blue',
-                onClick: () =>
-                {
+                onClick: () => {
                     new UserRoleDialog({
                         userID: this.entity.UserId,
                         username: this.entity.Username
@@ -46,8 +95,7 @@
                 title: Q.text('Site.UserDialog.EditPermissionsButton'),
                 cssClass: 'edit-permissions-button',
                 icon: 'fa-lock text-green',
-                onClick: () =>
-                {
+                onClick: () => {
                     new UserPermissionDialog({
                         userID: this.entity.UserId,
                         username: this.entity.Username

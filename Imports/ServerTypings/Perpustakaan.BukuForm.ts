@@ -4,8 +4,8 @@
         IdKategori: Serenity.LookupEditor;
         IdRak: Serenity.LookupEditor;
         Gambar: Serenity.ImageUploadEditor;
-        Isbn: Serenity.IntegerEditor;
         JudulBuku: Serenity.StringEditor;
+        Isbn: Serenity.IntegerEditor;
         Penerbit: Serenity.StringEditor;
         Pengarang: Serenity.StringEditor;
         TahunBuku: Serenity.DateEditor;
@@ -36,8 +36,8 @@
                     'IdKategori', w1,
                     'IdRak', w1,
                     'Gambar', w2,
-                    'Isbn', w3,
                     'JudulBuku', w0,
+                    'Isbn', w3,
                     'Penerbit', w0,
                     'Pengarang', w0,
                     'TahunBuku', w4,

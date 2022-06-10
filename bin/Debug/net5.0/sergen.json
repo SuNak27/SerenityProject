@@ -10,6 +10,17 @@
   },
   "Connections": [
     {
+      "Key": "Default",
+      "Tables": [
+        {
+          "Tablename": "notes",
+          "Identifier": "Note",
+          "Module": "Administration",
+          "PermissionKey": "Administration:General"
+        }
+      ]
+    },
+    {
       "Key": "MasterData",
       "Tables": [
         {

@@ -1,6 +1,8 @@
-﻿using Serenity.ComponentModel;
+﻿using System.Security.Cryptography.X509Certificates;
+using Serenity.ComponentModel;
 using System;
 using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace SerenPro.Administration.Forms
 {
@@ -27,5 +29,6 @@ namespace SerenPro.Administration.Forms
         public String PasswordConfirm { get; set; }
         [OneWay]
         public string Source { get; set; }
+        public List<object> NoteList { get; set; }
     }
 }

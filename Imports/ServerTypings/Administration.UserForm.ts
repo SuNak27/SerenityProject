@@ -14,6 +14,7 @@
         Password: Serenity.PasswordEditor;
         PasswordConfirm: Serenity.PasswordEditor;
         Source: Serenity.StringEditor;
+        NoteList: NotesEditor;
     }
 
     export class UserForm extends Serenity.PrefixedContext {
@@ -33,6 +34,7 @@
                 var w3 = s.DateEditor;
                 var w4 = s.EnumEditor;
                 var w5 = s.PasswordEditor;
+                var w6 = NotesEditor;
 
                 Q.initFormType(UserForm, [
                     'KodeAnggota', w0,
@@ -48,7 +50,8 @@
                     'Alamat', w0,
                     'Password', w5,
                     'PasswordConfirm', w5,
-                    'Source', w0
+                    'Source', w0,
+                    'NoteList', w6
                 ]);
             }
         }

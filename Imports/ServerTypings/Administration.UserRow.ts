@@ -19,6 +19,7 @@
         Telepon?: string;
         Whatsapp?: string;
         Alamat?: string;
+        NoteList?: NoteRow[];
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -60,6 +61,7 @@
             Telepon = "Telepon",
             Whatsapp = "Whatsapp",
             Alamat = "Alamat",
+            NoteList = "NoteList",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

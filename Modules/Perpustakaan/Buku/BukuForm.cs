@@ -12,12 +12,14 @@ namespace SerenPro.Perpustakaan.Forms
     [BasedOnRow(typeof(BukuRow), CheckNames = true)]
     public class BukuForm
     {
+        [Tab("General")]
         public string KodeBuku { get; set; }
         public int IdKategori { get; set; }
         public int IdRak { get; set; }
         public string Gambar { get; set; }
-        public int Isbn { get; set; }
         public string JudulBuku { get; set; }
+        [Tab("Detail")]
+        public int Isbn { get; set; }
         public string Penerbit { get; set; }
         public string Pengarang { get; set; }
         public DateTime TahunBuku { get; set; }

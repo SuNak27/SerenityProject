@@ -3,6 +3,7 @@ using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
 using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace SerenPro.Administration.Entities
 {
@@ -147,6 +148,13 @@ namespace SerenPro.Administration.Entities
             set => fields.Alamat[this] = value;
         }
 
+        [NotesEditor, NotMapped]
+        public List<NoteRow> NoteList
+        {
+            get => fields.NoteList[this];
+            set => fields.NoteList[this] = value;
+        }
+
         Int16Field IIsActiveRow.IsActiveField
         {
             get => fields.IsActive;
@@ -184,6 +192,7 @@ namespace SerenPro.Administration.Entities
             public StringField Telepon;
             public StringField Whatsapp;
             public StringField Alamat;
+            public RowListField<NoteRow> NoteList;
 
         }
     }

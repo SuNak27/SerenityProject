@@ -69,6 +69,35 @@ declare namespace SerenPro.Administration {
     }
 }
 declare namespace SerenPro.Administration {
+    interface NoteRow {
+        NoteID?: number;
+        EntityType?: string;
+        EntityId?: number;
+        Text?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        InsertUserDisplayName?: string;
+    }
+    namespace NoteRow {
+        const idProperty = "NoteID";
+        const nameProperty = "EntityType";
+        const localTextPrefix = "Administration.Note";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            NoteID = "NoteID",
+            EntityType = "EntityType",
+            EntityId = "EntityId",
+            Text = "Text",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            InsertUserDisplayName = "InsertUserDisplayName"
+        }
+    }
+}
+declare namespace SerenPro.Administration {
     namespace PermissionKeys {
         const Security = "Administration:Security";
         const Translation = "Administration:Translation";
@@ -234,6 +263,7 @@ declare namespace SerenPro.Administration {
         Password: Serenity.PasswordEditor;
         PasswordConfirm: Serenity.PasswordEditor;
         Source: Serenity.StringEditor;
+        NoteList: NotesEditor;
     }
     class UserForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -369,6 +399,7 @@ declare namespace SerenPro.Administration {
         Telepon?: string;
         Whatsapp?: string;
         Alamat?: string;
+        NoteList?: NoteRow[];
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -405,6 +436,7 @@ declare namespace SerenPro.Administration {
             Telepon = "Telepon",
             Whatsapp = "Whatsapp",
             Alamat = "Alamat",
+            NoteList = "NoteList",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -532,8 +564,8 @@ declare namespace SerenPro.Perpustakaan {
         IdKategori: Serenity.LookupEditor;
         IdRak: Serenity.LookupEditor;
         Gambar: Serenity.ImageUploadEditor;
-        Isbn: Serenity.IntegerEditor;
         JudulBuku: Serenity.StringEditor;
+        Isbn: Serenity.IntegerEditor;
         Penerbit: Serenity.StringEditor;
         Pengarang: Serenity.StringEditor;
         TahunBuku: Serenity.DateEditor;
@@ -922,6 +954,39 @@ declare namespace SerenPro.Administration {
     }
 }
 declare namespace SerenPro.Administration {
+    class NoteDialog extends Serenity.TemplatedDialog<any> {
+        private textEditor;
+        constructor();
+        protected getTemplate(): string;
+        protected getDialogButtons(): {
+            text: string;
+            click: () => void;
+        }[];
+        get text(): string;
+        set text(value: string);
+        okClick: () => void;
+    }
+}
+declare namespace SerenPro.Administration {
+    class NotesEditor extends Serenity.TemplatedWidget<any> implements Serenity.IGetEditValue, Serenity.ISetEditValue {
+        private isDirty;
+        private items;
+        constructor(div: JQuery);
+        protected getTemplate(): string;
+        protected updateContent(): void;
+        protected addClick(): void;
+        protected editClick(e: any): void;
+        deleteClick(e: any): void;
+        get value(): NoteRow[];
+        set value(value: NoteRow[]);
+        getEditValue(prop: Serenity.PropertyItem, target: any): void;
+        setEditValue(source: any, prop: Serenity.PropertyItem): void;
+        get_isDirty(): boolean;
+        set_isDirty(value: any): void;
+        onChange: () => void;
+    }
+}
+declare namespace SerenPro.Administration {
     class RoleDialog extends Serenity.EntityDialog<RoleRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -987,7 +1052,12 @@ declare namespace SerenPro.Administration {
         protected getNameProperty(): string;
         protected getService(): string;
         protected form: UserForm;
+        private loadedState;
         constructor();
+        getSaveState(): string;
+        loadResponse(data: any): void;
+        onSaveSuccess(response: any): void;
+        getTemplate(): string;
         protected getToolbarButtons(): Serenity.ToolButton[];
         protected updateInterface(): void;
         protected afterLoadEntity(): void;
@@ -1145,6 +1215,9 @@ declare namespace SerenPro.Perpustakaan {
         constructor();
         protected afterLoadEntity(): void;
         private getNextNumber;
+        protected updateInterface(): void;
+        protected getCloningEntity(): BukuRow;
+        private getNextNumberClone;
     }
 }
 declare namespace SerenPro.Perpustakaan {

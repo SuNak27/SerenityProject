@@ -19,6 +19,7 @@ namespace SerenPro.Perpustakaan.Forms
         public Int32 IdStatus { get; set; }
         [DefaultValue("now")]
         public DateTime TglPinjam { get; set; }
+        [ReadOnly(true)]
         public DateTime TglKembali { get; set; }
         public int Denda { get; set; }
     }
