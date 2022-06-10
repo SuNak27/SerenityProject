@@ -48,7 +48,7 @@
         onSaveSuccess(response) {
             super.onSaveSuccess(response);
 
-            Q.reloadLookup('Administrtion.User');
+            Q.reloadLookup('Administration.User');
         }
 
         getTemplate() {

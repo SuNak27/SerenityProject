@@ -28,7 +28,7 @@ namespace SerenPro.Administration
             set => fields.EntityType[this] = value;
         }
 
-        [DisplayName("Entity Id"), Column("EntityID"), NotNull, Updatable(false), Size(100)]
+        [DisplayName("Entity Id"), Column("EntityID"), Size(100), NotNull, Updatable(false)]
         public long? EntityId
         {
             get => fields.EntityId[this];

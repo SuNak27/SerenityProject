@@ -11,7 +11,7 @@ namespace SerenPro.Administration.Entities
     [DisplayName("Users"), InstanceName("User")]
     [ReadPermission(PermissionKeys.Security)]
     [ModifyPermission(PermissionKeys.Security)]
-    [LookupScript(Permission = PermissionKeys.Security)]
+    [LookupScript("Administration.User")]
     public sealed class UserRow : LoggingRow<UserRow.RowFields>, IIdRow, INameRow, IIsActiveRow
     {
         [DisplayName("User Id"), Identity, IdProperty]
