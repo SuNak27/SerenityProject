@@ -4,7 +4,7 @@
         KodePeminjaman?: string;
         IdUser?: number;
         KodeAnggota?: string;
-        Username?: string;
+        DisplayName?: string;
         IdStatus?: number;
         Status?: string;
         TglPinjam?: string;
@@ -27,7 +27,7 @@
             KodePeminjaman = "KodePeminjaman",
             IdUser = "IdUser",
             KodeAnggota = "KodeAnggota",
-            Username = "Username",
+            DisplayName = "DisplayName",
             IdStatus = "IdStatus",
             Status = "Status",
             TglPinjam = "TglPinjam",

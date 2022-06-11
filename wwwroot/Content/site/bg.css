@@ -1,0 +1,25 @@
+.bgimg {
+  background-image: url('.../upload/UserImage/00000/00000003_idbssb6fl7ooy.jpg');
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 6.8fr .1fr 1fr 1fr;
+  grid-template-rows: .5fr 1.3fr 1.2fr;
+  gap: 0px 0px;
+  grid-template-areas: 
+    ". . . ."
+    ". . . ."
+    ". . . .";
+}
+
+.container1 {
+  display: grid;
+  grid-template-columns: 6.8fr 0.1fr 1.2fr 1fr;
+  grid-template-rows: .5fr .2fr 2.3fr;
+  gap: 0px 0px;
+  grid-template-areas: 
+    ". . . ."
+    ". . . ."
+    ". . . .";
+}

@@ -22,6 +22,7 @@ namespace MVC
 
             public static class User
             {
+                public const string CetakKartuDetailReport = "~/Modules/Administration/User/CetakKartuDetailReport.cshtml";
                 public const string UserIndex = "~/Modules/Administration/User/UserIndex.cshtml";
             }
 
@@ -85,6 +86,7 @@ namespace MVC
 
             public static class Peminjaman
             {
+                public const string PeminjamanDetailReport = "~/Modules/Perpustakaan/Peminjaman/PeminjamanDetailReport.cshtml";
                 public const string PeminjamanIndex = "~/Modules/Perpustakaan/Peminjaman/PeminjamanIndex.cshtml";
                 public const string PengembalianIndex = "~/Modules/Perpustakaan/Peminjaman/PengembalianIndex.cshtml";
             }

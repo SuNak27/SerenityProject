@@ -1,0 +1,85 @@
+@model SerenPro.Perpustakaan.PeminjamanDetailReportData
+
+@if ((bool?)ViewData["Printing"] == true)
+{
+  Layout = "_LayoutNoNavigation";
+}
+
+<h6>
+  <section class="invoice">
+    <div class="pull-left">
+      <center>
+        <img style="margin-left: 5px; width:2cm;" src="~/Content/site/images/logoPerpus.png" class="img-responsive">
+      </center>
+      <br>
+    </div>
+    <div class="row">
+      <h2 class="page-header">
+        Invoice Peminjaman Buku
+        <small class="pull-right">Date: @DateTime.Now.ToLongDateString()</small>
+      </h2>
+    </div>
+    <!-- info row -->
+    <div class="row invoice-info">
+      <div class="col-sm-4 invoice-col">
+        <address>
+          <br><br>
+          <strong>PERPUSTAKAAN OPOP</strong><br>
+          Jl. Loncat Indah Ruko Modern A7 Tasikmadu Malang<br>
+          Phone: +62 812-3430-6725<br>
+          Email: perpusopop@gmail.com
+        </address>
+      </div>
+      <!-- /.col -->
+      <div class="col-sm-4 invoice-col">
+        <address>
+          <strong>@Model.Order.DisplayName</strong><br>
+        </address>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    <!-- Table row -->
+    <div class="row">
+      <div class="col-xs-12 col-12 table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Kode Peminjaman</th>
+              <th>Kode Anggota</th>
+              <th>Nama</th>
+              <th>Buku</th>
+              <th>Status</th>
+              <th>Tanggal Peminjaman</th>
+              <th>Tanggal Kembali</th>
+              <th>Denda</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>@Model.Order.KodePeminjaman</td>
+              <td>@Model.Order.KodeAnggota</td>
+              <td>@Model.Order.DisplayName</td>
+              <td>
+                @foreach (var d in Model.Details)
+                {
+                  <p>@d.IdBukuJudulBuku</p>
+                }
+              </td>
+              <td>@Model.Order.Status</td>
+              <td>@Model.Order.TglPinjam</td>
+              <td>@Model.Order.TglKembali</td>
+              <td>@Model.Order.Denda</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.col -->
+    </div>
+
+
+    <div class="text-center">
+      <h4>Terima Kasih Telah Meminjam Buku Di Perpustakaan Kita</h4>
+    </div>
+
+  </section>
+</h6>

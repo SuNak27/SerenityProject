@@ -45,11 +45,11 @@ namespace SerenPro.Perpustakaan
             set => fields.KodeAnggota[this] = value;
         }
 
-        [DisplayName("Anggota"), Expression("jUser.Username")]
-        public string Username
+        [DisplayName("Anggota"), Expression("jUser.DisplayName")]
+        public string DisplayName
         {
-            get => fields.Username[this];
-            set => fields.Username[this] = value;
+            get => fields.DisplayName[this];
+            set => fields.DisplayName[this] = value;
         }
 
         [MasterDetailRelation(foreignKey: "IdPeminjaman", IncludeColumns = "IdBukuJudulBuku")]
@@ -112,7 +112,7 @@ namespace SerenPro.Perpustakaan
             public StringField KodePeminjaman;
             public Int32Field IdUser;
             public StringField KodeAnggota;
-            public StringField Username;
+            public StringField DisplayName;
             public Int32Field IdStatus;
             public StringField Status;
             public DateTimeField TglPinjam;

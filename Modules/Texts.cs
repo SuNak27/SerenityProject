@@ -31,39 +31,39 @@ namespace SerenPro
             {
                 public static class ChangePassword
                 {
-                    public static LocalText FormTitle = "Change Password";
-                    public static LocalText SubmitButton = "Change Password";
-                    public static LocalText Success = "Your password is changed.";
+                    public static LocalText FormTitle = "Ganti Password";
+                    public static LocalText SubmitButton = "Simpan Password";
+                    public static LocalText Success = "Password Telah Diubah";
                 }
 
                 public static class ForgotPassword
                 {
-                    public static LocalText FormInfo = "Please enter the e-mail you used to signup.";
-                    public static LocalText FormTitle = "Forgot My Password";
+                    public static LocalText FormInfo = "Email wajib diisi";
+                    public static LocalText FormTitle = "Lupa Password";
                     public static LocalText SubmitButton = "Reset My Password";
-                    public static LocalText Success = "An e-mail with password reset instructions is sent to your e-mail address.";
-                    public static LocalText BackToLogin = "I remember my password";
+                    public static LocalText Success = "Silahkan check email anda untuk melakukan reset password";
+                    public static LocalText BackToLogin = "Kembali ke halaman login";
                 }
 
                 public static class ResetPassword
                 {
-                    public static LocalText EmailSubject = "Reset Your SerenPro Password";
+                    public static LocalText EmailSubject = "Reset Password";
                     public static LocalText FormTitle = "Reset Password";
                     public static LocalText SubmitButton = "Reset Password";
-                    public static LocalText Success = "Your password is changed. Please login with your new password.";
-                    public static LocalText BackToLogin = "I remember my password. Don't reset it!";
+                    public static LocalText Success = "Password telah diubah";
+                    public static LocalText BackToLogin = "Kembali ke halaman login";
                 }
 
                 public static class Login
                 {
-                    public static LocalText LoginToYourAccount = "Login to your account";
-                    public static LocalText SignInButton = "Sign In";
-                    public static LocalText ForgotPassword = "Forgot password?";
-                    public static LocalText SignUpButton = "Don't have account yet? Sign up.";
-                    public static LocalText RememberMe = "Remember Me";
-                    public static LocalText OR = "OR";
-                    public static LocalText FacebookButton = "Sign in using Facebook";
-                    public static LocalText GoogleButton = "Sign in using Google+";
+                    public static LocalText LoginToYourAccount = "Silahkan login";
+                    public static LocalText SignInButton = "Login";
+                    public static LocalText ForgotPassword = "Lupa Password?";
+                    public static LocalText SignUpButton = "Daftar";
+                    public static LocalText RememberMe = "Ingat saya";
+                    public static LocalText OR = "Atau";
+                    public static LocalText FacebookButton = "Login dengan Facebook";
+                    public static LocalText GoogleButton = "Login dengan Google+";
                 }
 
                 public static class SignUp

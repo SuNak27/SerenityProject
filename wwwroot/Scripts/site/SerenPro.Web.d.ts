@@ -725,7 +725,7 @@ declare namespace SerenPro.Perpustakaan {
         KodePeminjaman?: string;
         IdUser?: number;
         KodeAnggota?: string;
-        Username?: string;
+        DisplayName?: string;
         IdStatus?: number;
         Status?: string;
         TglPinjam?: string;
@@ -746,7 +746,7 @@ declare namespace SerenPro.Perpustakaan {
             KodePeminjaman = "KodePeminjaman",
             IdUser = "IdUser",
             KodeAnggota = "KodeAnggota",
-            Username = "Username",
+            DisplayName = "DisplayName",
             IdStatus = "IdStatus",
             Status = "Status",
             TglPinjam = "TglPinjam",
@@ -1119,6 +1119,10 @@ declare namespace SerenPro.Administration {
         protected getService(): string;
         constructor(container: JQuery);
         protected getDefaultSortBy(): UserRow.Fields[];
+        protected getSlickOptions(): Slick.GridOptions;
+        protected createSlickGrid(): Slick.Grid;
+        protected getColumns(): Slick.Column[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
     }
 }
 declare namespace SerenPro.Authorization {
